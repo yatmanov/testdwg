@@ -19,6 +19,5 @@ jobs:
         pip install poetry
     - name: Publish distribution 📦 to PyPI
       run: |
-        poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
         poetry version ${{ github.ref_name }}
-        poetry publish --build -u __token__ -p ${{ secrets.PYPI_TOKEN }}
+        poetry publish --build -u __token__ -p pypi-${{ secrets.PYPI_TOKEN }}
