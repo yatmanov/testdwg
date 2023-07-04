@@ -24,9 +24,3 @@ jobs:
         poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
         poetry version ${{ github.ref_name }}
         poetry publish --build
-    - name: Install packages
-      run: |
-        poetry install
-    - name: Update documentation
-      run: |
-        poetry run 
