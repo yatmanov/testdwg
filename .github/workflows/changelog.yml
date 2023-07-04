@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -18,9 +20,7 @@ jobs:
           pip install --upgrade pip
           pip install poetry
           poetry install
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
+      - name: Generate changelog
         run: |
           poetry run towncrier build --yes --version=${{github.ref_name}}
           git config user.name github-actions
