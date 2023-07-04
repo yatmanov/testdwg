@@ -6,7 +6,7 @@ on:
     tags:
     - '0.*[0-9].*[0-9]'
 jobs:
-  publish:
+  prepare:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,6 +19,13 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install poetry
+    - name: Install packages
+      run: |
+        poetry install
+  publish:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
     - name: Publish distribution 📦 to PyPI
       run: |
         poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
