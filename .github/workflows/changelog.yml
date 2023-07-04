@@ -17,16 +17,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-
-      - name: Install deps
-        run: |
+      - run: |
           pip install --upgrade pip
           pip install poetry
-#          poetry install
-      - name: Generate changelog
-        run: |
-          poetry run towncrier build --yes --version=${{github.ref_name}}
-#          git config user.name github-actions
-#          git config user.email github-actions@github.com
+          poetry install
+      - run: |
+          poetry run towncrier build --yes --version=${{ github.ref_name }}
           git commit -m "Gen changelog"
           git push origin HEAD:master
