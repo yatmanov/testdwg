@@ -1,0 +1,27 @@
+name: Generate changelog
+
+on:
+  push:
+    tags:
+      - 0.*[0-9].*[0-9]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
+      - name: Generate changelog
+        run: |
+          poetry run towncrier build --yes --version=${{github.ref_name}}
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -m "Gen changelog"
+          git push
