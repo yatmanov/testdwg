@@ -18,7 +18,9 @@ jobs:
           pip install --upgrade pip
           pip install poetry
           poetry install
-      - name: Generate changelog
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
         run: |
           poetry run towncrier build --yes --version=${{github.ref_name}}
           git config user.name github-actions
