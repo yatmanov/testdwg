@@ -23,5 +23,10 @@ jobs:
           poetry install
       - run: |
           poetry run towncrier build --yes --version=${{ github.ref_name }}
+          user=$(gh api /user)
+          user_name=$(jq -r '.login' <<<"$user")
+          user_email=$(jq -r ".email | \"$user_name@users.noreply.github.com\"" <<<"$user")
+          git config user.name "$user_name"
+          git config user.email "$user_email"
           git commit -m "Gen changelog"
           git push origin HEAD:master
