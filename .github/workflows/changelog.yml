@@ -13,6 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.pat }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -24,7 +25,7 @@ jobs:
       - name: Generate changelog
         run: |
           poetry run towncrier build --yes --version=${{github.ref_name}}
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+#          git config user.name github-actions
+#          git config user.email github-actions@github.com
           git commit -m "Gen changelog"
           git push origin HEAD:master
