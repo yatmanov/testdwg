@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["yatmanov <yatmanov@megaputer.ru>"]
 readme = "README.md"
+include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
