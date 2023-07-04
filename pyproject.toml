@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "testdwg"
-version = "0.1.0"
+version = "0.1.0"  # not used
 description = ""
 license = "MIT"
 authors = ["yatmanov <yatmanov@megaputer.ru>"]
@@ -21,3 +21,7 @@ towncrier = "^23.6.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.towncrier]
+directory = ".changes"
+filename = "CHANGELOG.md"
