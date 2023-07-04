@@ -2,9 +2,14 @@
 name = "testdwg"
 version = "0.1.0"
 description = ""
+license = "MIT"
 authors = ["yatmanov <yatmanov@megaputer.ru>"]
 readme = "README.md"
-include = ["CHANGELOG.md"]
+repository = "https://github.com/yatmanov/testdwg"
+documentation = "https://yatmanov.github.io/testdwg/"
+
+[tool.poetry.urls]
+"Changelog" = "https://github.com/yatmanov/testdwg/blob/master/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
