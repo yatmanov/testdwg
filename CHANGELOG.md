@@ -1,3 +1,8 @@
+1.1.0 (2023-07-06)
+
+No significant changes.
+
+
 1.0.10 (2023-07-06)
 
 No significant changes.
