@@ -1,4 +1,4 @@
-name: Release new package and documentation
+name: Release package and documentation
 
 on:
   push:
