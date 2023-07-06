@@ -25,6 +25,7 @@ jobs:
 
   document:
     name: Update documentation on Github Pages
+    needs: publish
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,6 +47,7 @@ jobs:
 
   changelog:
     name: Update CHANGELOG.md
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
